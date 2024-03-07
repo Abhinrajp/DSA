@@ -1,39 +1,55 @@
-class Dn {
+class DoubleNode {
   int? data;
-  Dn? next;
-  Dn? prev;
-  Dn(this.data);
+  DoubleNode? next;
+  DoubleNode? prev;
+  DoubleNode(this.data);
 }
 
-class LL {
-  Dn? head = null;
+class Doublelink {
+  DoubleNode? head = null;
+
   void display() {
-    Dn? current = head;
+    DoubleNode? current = head;
     while (current != null) {
       print(current.data);
       current = current.next;
     }
   }
 
-  void insertfirst(int data) {
-    Dn newnode = Dn(data);
+  void insertend(int data) {
+    DoubleNode? newnode = DoubleNode(data);
     if (head == null) {
       head = newnode;
       return;
     }
-    Dn? current = head;
+    DoubleNode? current = head;
     while (current!.next != null) {
       current = current.next;
     }
     current.next = newnode;
+    newnode.prev = current;
   }
 
-  void insert(int num, int data) {
-    Dn? newnode = Dn(data);
+  void insertfirst(int data) {
+    DoubleNode? newnode = DoubleNode(data);
+    if (head == null) {
+      head = newnode;
+      return;
+    }
+    DoubleNode? current = head;
+    newnode.next = current;
+    if (current != null) {
+      current.prev = newnode;
+    }
+    head = newnode;
+  }
+
+  void insertafter(int num, int data) {
+    DoubleNode? newnode = DoubleNode(data);
     if (head == null) {
       return;
     }
-    Dn? current = head;
+    DoubleNode? current = head;
     while (current != null) {
       if (current.data == num) {
         newnode.next = current.next;
@@ -42,51 +58,98 @@ class LL {
           current.next!.prev = newnode;
         }
         current.next = newnode;
-        // break;
       }
       current = current.next;
     }
   }
 
   void insertbefore(int num, int data) {
-    Dn newnode = Dn(data);
+    DoubleNode? newnodde = DoubleNode(data);
     if (head == null) {
-      head = newnode;
       return;
     }
-    Dn? current = head;
+    DoubleNode? current = head;
     while (current != null) {
       if (current.data == num) {
-        newnode.next = current;
-        newnode.prev = current.prev;
+        newnodde.next = current;
+        newnodde.prev = current.prev;
         if (current.prev != null) {
-          current.prev!.next = newnode;
+          current.prev!.next = newnodde;
         } else {
-          head = newnode;
+          head = newnodde;
         }
-        current.prev = newnode;
+        current.prev = newnodde;
         return;
       }
       current = current.next;
     }
   }
+
+  void delete(int data) {
+    DoubleNode? current = head;
+    while (current != null) {
+      if (current.data == data) {
+        if (current == head) {
+          head = current.next;
+          if (head != null) {
+            head!.prev = null;
+          }
+        } else {
+          if (current.next != null) {
+            current.next!.prev = current.prev;
+          }
+          if (current.prev != null) {
+            current.prev!.next = current.next;
+          }
+        }
+      }
+      current = current.next;
+    }
+  }
+
+  void reverse() {
+    DoubleNode? current = head;
+    DoubleNode? temp;
+
+    while (current != null) {
+      temp = current.prev;
+      current.prev = current.next;
+      current.next = temp;
+      current = current.prev;
+    }
+
+    if (temp != null) {
+      head = temp.prev;
+    }
+  }
 }
 
-void main(List<String> args) {
-  LL ll = LL();
-  ll.insertfirst(1);
-  ll.insertfirst(2);
-  ll.insertfirst(3);
-  ll.insertfirst(4);
-  ll.insertfirst(5);
-  ll.insertfirst(6);
-  ll.insertfirst(7);
-  ll.insertfirst(8);
-  ll.display();
-  print('after insert');
-  ll.insert(4, 111);
-  ll.display();
-  print('after insert before');
-  ll.insertbefore(3, 222);
-  ll.display();
+void main() {
+  Doublelink dl = Doublelink();
+  dl.insertend(1);
+  dl.insertend(2);
+  dl.insertend(3);
+  dl.insertend(4);
+  dl.insertend(5);
+  dl.display();
+
+  print('after insert first');
+  dl.insertfirst(999);
+  dl.display();
+
+  print(' insert after');
+  dl.insertafter(3, 666);
+  dl.display();
+
+  print(' insert before');
+  dl.insertbefore(2, 888);
+  dl.display();
+
+  print(' after delete');
+  dl.delete(5);
+  dl.display();
+
+  print(' after reverse');
+  dl.reverse();
+  dl.display();
 }

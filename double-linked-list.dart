@@ -38,6 +38,7 @@ class DoubleLinklist {
       return;
     }
     DNode? current = head;
+
     while (current != null) {
       if (current.data == num) {
         newnode.next = current.next;
