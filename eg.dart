@@ -142,33 +142,33 @@ void main(List<String> args) {
 
   linkedlist.display();
 
-  print('after insert first');
-  linkedlist.insertfirst(111);
-  linkedlist.display();
+  // print('after insert first');
+  // linkedlist.insertfirst(111);
+  // linkedlist.display();
 
-  print('after insert ');
-  linkedlist.insertafter(3, 222);
-  linkedlist.display();
+  // print('after insert ');
+  // linkedlist.insertafter(3, 222);
+  // linkedlist.display();
 
-  print('after insert before');
-  linkedlist.insertbefore(2, 333);
-  linkedlist.display();
+  // print('after insert before');
+  // linkedlist.insertbefore(2, 333);
+  // linkedlist.display();
 
-  print('after delete');
-  linkedlist.delete(5);
-  linkedlist.display();
+  // print('after delete');
+  // linkedlist.delete(5);
+  // linkedlist.display();
 
-  print('after reverse');
-  linkedlist.reverse();
-  linkedlist.display();
+  // print('after reverse');
+  // linkedlist.reverse();
+  // linkedlist.display();
 
-  print('after link to array');
-  List<int> array = linkedlist.likedtolist();
-  print(array);
+  // print('after link to array');
+  // List<int> array = linkedlist.likedtolist();
+  // print(array);
 
-  print('after  array  to link ');
-  linkedlist.listtolink(ary);
-  linkedlist.display();
+  // print('after  array  to link ');
+  // linkedlist.listtolink(ary);
+  // linkedlist.display();
 
   print('mid value');
   int? mid = linkedlist.midvalu();
