@@ -1,12 +1,12 @@
 void main() {
-  //sum
+  // sum
 
-  // List<int> arr = [1, 2, 3, 4, 7];
-  // print(arr);
-  // List<int> result = sum(arr, 10);
-  // print(result);
+  List<int> arr = [1, 2, 3, 4, 7];
+  print(arr);
+  List<int> result = sum(arr, 10);
+  print(result);
 
-//move to  end.
+// move to  end.
 
   List<int> array = [
     1,
@@ -22,12 +22,12 @@ void main() {
     2,
   ];
 
-  // List<int> res = movenumber(array, 2);
-  // print(res);
+  List<int> res = movenumber(array, 2);
+  print(res);
 
   // find number.
 
-  // findnum(array, 20);
+  findnum(array, 20);
 }
 
 //find the sum of numbers that gives the target.
